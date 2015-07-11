@@ -1,0 +1,20 @@
+{
+  "name": "sb-admin-dashboard-flask",
+  "version": "0.0.1",
+  "homepage": "https://github.com/RobertSudwarts/heroku-python-skeleton",
+  "authors": [
+    "Robert Sudwarts <robert.sudwarts@gmail.com>"
+  ],
+  "description": "A free, open source, Bootstrap admin theme created by Start Bootstrap adapted for use with Flask",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "startbootstrap-sb-admin-2": "~1.0.7"
+  }
+}

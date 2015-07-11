@@ -1,12 +1,15 @@
 import os
 
 from flask import Flask
-from flask import render_template
+from flask import render_template, render_template_string
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext import menu
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+app.config.from_object('config.DevelopmentConfig')
 db = SQLAlchemy(app)
+menu.Menu(app=app)
+
 
 
 class User(db.Model):
@@ -23,9 +26,40 @@ class User(db.Model):
 
 
 @app.route('/')
+@menu.register_menu(app, '.index', _('Home'), icon="fa-dashboard")
 def home():
     return render_template('index.html')
 
+@app.route('/charts')
+@menu.register_menu(app, '.charts', 'charts', icon="fa-bar-chart")
+def charts_page():
+    return render_template('charts.html')
+
+
+@app.route('/blank')
+@menu.register_menu(app, '.blank', 'Blank')
+def blank_page():
+    return render_template('blank.html')
+
+@app.route('/monkeys')
+@menu.register_menu(app, '.monkeys', 'Monkeys', icon="fa-wrench")
+def monkeys():
+    pass
+    # return render_template('monkeys.html')
+
+@app.route('/monkeys/newworld')
+@menu.register_menu(app, '.monkeys.newworld', 'New World Monkeys')
+def new_world_monkeys():
+    return render_template('new_world_monkeys.html')
+
+@app.route('/monkeys/oldworld')
+@menu.register_menu(app, '.monkeys.oldworld', 'Old World Monkeys')
+def old_world_monkeys():
+    return render_template('old_world_monkeys.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 @app.route('/robots.txt')
 def robots():

@@ -2,6 +2,27 @@
 
 This repository has all the base files ready for deploying a Heroku application, including a simple database model managed with flask-sqlalchemy.
 
+My 'contribution' here is incorporation of the [SB Admin 2 bootstrap template](http://startbootstrap.com/template-overviews/sb-admin-2/)
+It will no longer be a 'simple' app but ideally will have working links to pages which use jinja templates accordingly
+
+## Bower installation
+
+```bash
+$ sudo apt-get install nodejs
+$ sudo apt-get install npm
+$ sudo npm install -g bower
+```
+
+when trying `$ bower`, should you get the following error : 
+`$ /usr/bin/env: node: No such file or directory`
+
+You can use a symlink to fix:
+$ sudo ln -s /usr/bin/nodejs /usr/bin/node
+
+Once bower is installed you can simply run in the /static directory:
+
+$ bower install startbootstrap-sb-admin-2
+
 ## Usage
 
 ### Initial
